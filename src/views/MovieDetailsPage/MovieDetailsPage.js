@@ -1,6 +1,7 @@
 import React, {Component} from "react";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import fetchWithQuery from "../../services/movie-api";
+import routes from "../../routes";
 
 class MovieDetailsPage extends Component {
   state = {
@@ -16,10 +17,20 @@ class MovieDetailsPage extends Component {
       .catch(error => this.setState({error}));
   }
 
+  handleGoBack = () => {
+    const {location: {state}, history} = this.props;
+
+    if (state && state.from) {
+      return history.push(state.from);
+    }
+    history.push(routes.movies)
+  }
+
   render() {
     const {movie, error} = this.state;
     return (
       <div className="container">
+        <button type="button" onClick={this.handleGoBack}>Return to movies</button>
         {movie && <MovieDetails movie={movie}/>}
         {error && <h2>For technical reasons the information is temporarily unavailable, please try again later</h2>}
       </div>
