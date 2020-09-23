@@ -4,7 +4,6 @@ import Layout from "./components/Layout/Layout";
 import NavBar from "./components/NavBar/NavBar";
 import routes from "./routes";
 
-
 function App() {
   return (
     <Layout>
