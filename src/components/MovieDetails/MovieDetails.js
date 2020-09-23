@@ -1,16 +1,17 @@
 import React, {Component} from "react";
+import refs from "../../services/refs";
 import styles from "./MovieDetails.module.css";
 
 class MovieDetails extends Component {
 
   render() {
-    const {id, title, overview, poster_path: poster, vote_average: score, release_date, genres} = this.props.movie;
+    const {title, overview, poster_path: poster, vote_average: score, release_date, genres} = this.props.movie;
     const release = (new Date(release_date)).getFullYear();
     return (
       <section>
         <div className={styles["movieDetails"]}>
-          <div>
-            <img className={styles["poster"]} src={poster}/>
+          <div className={styles["poster"]}>
+            <img src={`${refs.IMAGES_URL}${poster}`}/>
           </div>
           <div>
             <h2>{title} ({release})</h2>

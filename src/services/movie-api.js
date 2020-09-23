@@ -1,7 +1,9 @@
+import refs from "./refs";
+
 const fetchWithQuery = (endpoint, query = "") => {
   const url = query !== ""
-    ? `https://api.themoviedb.org/3/${endpoint}?api_key=0582d3f510963f6ac84a3c592afe6834&query=${query}`
-    : `https://api.themoviedb.org/3/${endpoint}?api_key=0582d3f510963f6ac84a3c592afe6834`;
+    ? `${refs.BASE_URL}${endpoint}?api_key=${refs.API_KEY}&query=${query}`
+    : `${refs.BASE_URL}${endpoint}?api_key=${refs.API_KEY}`;
 
   return fetch(url)
     .then(res => res.json());
