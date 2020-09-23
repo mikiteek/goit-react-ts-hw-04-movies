@@ -1,0 +1,13 @@
+.movieDetails {
+  display: flex;
+}
+.poster {
+  margin-right: 20px;
+}
+
+.genresList {
+  display: flex;
+}
+.genresList li:not(:last-child) {
+  margin-right: 20px;
+}
