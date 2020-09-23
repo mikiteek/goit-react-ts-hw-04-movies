@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {NavLink} from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
 import fetchWithQuery from "../../services/movie-api";
+import routes from "../../routes";
 
 class HomePage extends Component {
   state = {
@@ -27,7 +28,7 @@ class HomePage extends Component {
           <MovieList>
             {movies.map(film => (
               <li key={film.id}>
-                <NavLink to="">{film.title}</NavLink>
+                <NavLink to={`/${routes.movies}/${film.id}`}>{film.title}</NavLink>
               </li>
             ))}
           </MovieList>

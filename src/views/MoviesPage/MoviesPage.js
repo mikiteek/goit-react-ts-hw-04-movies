@@ -18,13 +18,14 @@ class MoviesPage extends Component {
 
   render() {
     const {movies, error} = this.state;
+    const match = this.props.match;
     return (
       <section className="container">
         {movies.length > 0 &&
         <MovieList>
           {movies.map(film => (
             <li key={film.id}>
-              <NavLink to="">{film.title}</NavLink>
+              <NavLink to={`${match.url}/${film.id}`}>{film.title}</NavLink>
             </li>
           ))}
         </MovieList>}
