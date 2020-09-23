@@ -11,7 +11,6 @@ class HomePage extends Component {
   }
 
   componentDidMount() {
-    console.log("Did mount");
     fetchWithQuery("trending/movie/day")
       .then(({results}) => results)
       .then(movies => this.setState({movies}))
@@ -28,7 +27,7 @@ class HomePage extends Component {
           <MovieList>
             {movies.map(film => (
               <li key={film.id}>
-                <NavLink to={`/${routes.movies}/${film.id}`}>{film.title}</NavLink>
+                <NavLink to={`${routes.movies}/${film.id}`}>{film.title}</NavLink>
               </li>
             ))}
           </MovieList>
