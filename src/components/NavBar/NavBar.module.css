@@ -1,0 +1,18 @@
+.navList {
+  display: flex;
+}
+
+.navList li:not(:last-child) {
+  margin-right: 20px;
+}
+
+.navListItem {
+  cursor: pointer;
+}
+
+.navLink {
+  color: #000;
+}
+.navLink.activeNavLink {
+  color: #cd1a4e;
+}
