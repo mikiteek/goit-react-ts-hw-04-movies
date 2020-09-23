@@ -13,6 +13,10 @@
 .navLink {
   color: #000;
 }
-.navLink.activeNavLink {
+.activeNavLink {
   color: #cd1a4e;
+}
+
+.header {
+  height: 80px;
 }
