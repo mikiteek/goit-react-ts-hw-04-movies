@@ -1,9 +1,11 @@
 import React, {Component} from "react";
+import {NavLink, Route} from "react-router-dom";
 import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import Cast from "../Cast/Cast";
+import Reviews from "../Reviews/Reviews";
 import fetchWithQuery from "../../services/movie-api";
 import routes from "../../routes";
-import {NavLink, Route} from "react-router-dom";
+
 
 class MovieDetailsPage extends Component {
   state = {
@@ -39,10 +41,16 @@ class MovieDetailsPage extends Component {
 
         <section>
           <h2>Additional infirmation</h2>
-          <NavLink to={`${match.url}/cast`}>Cast</NavLink>
+          <div>
+            <NavLink to={`${match.url}/cast`}>Cast</NavLink>
+          </div>
+          <div>
+            <NavLink to={`${match.url}/reviews`}>Reviews</NavLink>
+          </div>
         </section>
 
         <Route path={`${match.path}/cast`} component={Cast}/>
+        <Route path={`${match.path}/reviews`} component={Reviews}/>
 
         {error && <h2>For technical reasons the information is temporarily unavailable, please try again later</h2>}
       </div>
