@@ -1,38 +1,37 @@
 import React, {Component} from "react";
 import refs from "../../services/refs";
 import fetchWithQuery from "../../services/movie-api";
-import styles from "./Cast.module.css";
 
-class Cast extends Component {
+class Reviews extends Component {
   state = {
-    cast: [],
+    reviews: [],
     error: null,
   }
 
   componentDidMount() {
-    const endpoint = (`movie/${this.props.match.params.movieId}/credits`);
+    const endpoint = (`movie/${this.props.match.params.movieId}/reviews`);
     fetchWithQuery(endpoint)
-      .then(({cast}) => this.setState({cast}))
+      .then(({results}) => this.setState({reviews: results}))
       .catch(error => this.setState({error}));
   }
 
   render() {
-    const {cast, error} = this.state;
+    const {reviews, error} = this.state;
     return (
       <>
-        <ul className={styles["castList"]}>
-          {cast.map(({id, name, profile_path: photo}) => (
+        <ul>
+          {reviews.length > 0 && reviews.map(({id, author, content}) => (
             <li key={id}>
-              <img src={`${refs.IMAGES_URL}${photo}`} width={100}/>
-              <h3>{name}</h3>
+              <h3>{author}</h3>
+              <p>{content}</p>
             </li>
           ))}
+          {reviews.length === 0 && <h2>No reviews</h2>}
         </ul>
         {error && <h2>For technical reasons the information is temporarily unavailable, please try again later</h2>}
       </>
-
     );
   }
 }
 
-export default Cast;
+export default Reviews;
