@@ -4,6 +4,7 @@ import MovieDetails from "../../components/MovieDetails/MovieDetails";
 import Cast from "../Cast/Cast";
 import Reviews from "../Reviews/Reviews";
 import fetchWithQuery from "../../services/movie-api";
+import styles from "./MovieDetailsPage.module.scss";
 import routes from "../../routes";
 
 
@@ -33,20 +34,21 @@ class MovieDetailsPage extends Component {
   render() {
     const {movie, error} = this.state;
     const {match} = this.props;
-    console.log(match);
     return (
       <div className="container">
-        <button type="button" onClick={this.handleGoBack}>Return to movies</button>
+        <button className={styles.btnReturn} type="button" onClick={this.handleGoBack}>Return to movies</button>
         {movie && <MovieDetails movie={movie}/>}
 
-        <section>
-          <h2>Additional infirmation</h2>
-          <div>
-            <NavLink to={`${match.url}/cast`}>Cast</NavLink>
-          </div>
-          <div>
-            <NavLink to={`${match.url}/reviews`}>Reviews</NavLink>
-          </div>
+        <section className={styles.sectionAdditional}>
+          <h2 className={styles.titleAdditional}>Additional information</h2>
+          <ul className={styles.listAdditional}>
+            <li>
+              <NavLink to={`${match.url}/cast`}>Cast</NavLink>
+            </li>
+            <li>
+              <NavLink to={`${match.url}/reviews`}>Reviews</NavLink>
+            </li>
+          </ul>
         </section>
 
         <Route path={`${match.path}/cast`} component={Cast}/>

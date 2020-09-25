@@ -1,7 +1,7 @@
 import React, {Component} from "react";
 import refs from "../../services/refs";
 import fetchWithQuery from "../../services/movie-api";
-import styles from "./Cast.module.css";
+import styles from "./Cast.module.scss";
 
 class Cast extends Component {
   state = {
@@ -20,7 +20,7 @@ class Cast extends Component {
     const {cast, error} = this.state;
     return (
       <>
-        <ul className={styles["castList"]}>
+        <ul className={styles.castList}>
           {cast.map(({id, name, profile_path: photo}) => (
             <li key={id}>
               <img src={`${refs.IMAGES_URL}${photo}`} width={100} alt={name}/>

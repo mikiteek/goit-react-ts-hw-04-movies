@@ -1,10 +1,10 @@
 import React, {Component} from "react";
-import styles from "./MovieList.module.css";
+import styles from "./MovieList.module.scss";
 
 class MovieList extends Component {
   render() {
     return (
-      <ul className={styles["movieList"]}>
+      <ul className={styles.movieList}>
         {this.props.children}
       </ul>
     );

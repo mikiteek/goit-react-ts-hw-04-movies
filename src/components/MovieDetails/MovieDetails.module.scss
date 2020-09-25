@@ -11,3 +11,11 @@
 .genresList li:not(:last-child) {
   margin-right: 20px;
 }
+
+.title,.rating,.overViewTitle,.overViewContent,.genresTitle {
+  margin-bottom: 10px;
+}
+
+.genresBlock {
+  margin-bottom: 20px;
+}

@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import refs from "../../services/refs";
-import styles from "./MovieDetails.module.css";
+import styles from "./MovieDetails.module.scss";
 
 class MovieDetails extends Component {
 
@@ -9,21 +9,23 @@ class MovieDetails extends Component {
     const release = (new Date(release_date)).getFullYear();
     return (
       <section>
-        <div className={styles["movieDetails"]}>
-          <div className={styles["poster"]}>
+        <div className={styles.movieDetails}>
+          <div className={styles.poster}>
             <img src={`${refs.IMAGES_URL}${poster}`} alt={title}/>
           </div>
           <div>
-            <h2>{title} ({release})</h2>
-            <p>User rating: {score}</p>
-            <h3>Overview</h3>
-            <p>{overview}</p>
-            <h3>Genres</h3>
-            <ul className={styles["genresList"]}>
-              {genres.map(({name, id}) => (
-                <li key={id}>{name}</li>
-              ))}
-            </ul>
+            <h2 className={styles.title}>{title} ({release})</h2>
+            <p className={styles.rating}>User rating: {score}</p>
+            <h3 className={styles.overViewTitle}>Overview</h3>
+            <p className={styles.overViewContent}>{overview}</p>
+            <div className={styles.genresBlock}>
+              <h3 className={styles.genresTitle}>Genres</h3>
+              <ul className={styles.genresList}>
+                {genres.map(({name, id}) => (
+                  <li key={id}>{name}</li>
+                ))}
+              </ul>
+            </div>
           </div>
         </div>
       </section>
