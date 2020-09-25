@@ -4,7 +4,7 @@
   "private": true,
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/mikiteek/react-template.git"
+    "url": "git+https://github.com/mikiteek/goit-react-hw-04-movies.git"
   },
   "homepage": ".",
   "dependencies": {

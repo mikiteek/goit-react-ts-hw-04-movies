@@ -11,7 +11,7 @@ class MovieDetails extends Component {
       <section>
         <div className={styles["movieDetails"]}>
           <div className={styles["poster"]}>
-            <img src={`${refs.IMAGES_URL}${poster}`}/>
+            <img src={`${refs.IMAGES_URL}${poster}`} alt={title}/>
           </div>
           <div>
             <h2>{title} ({release})</h2>
