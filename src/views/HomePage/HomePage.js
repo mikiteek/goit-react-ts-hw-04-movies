@@ -2,6 +2,7 @@ import React, {Component} from "react";
 import {NavLink} from "react-router-dom";
 import MovieList from "../../components/MovieList/MovieList";
 import fetchWithQuery from "../../services/movie-api";
+import styles from "./HomePage.module.scss";
 import routes from "../../routes";
 
 class HomePage extends Component {
@@ -21,7 +22,7 @@ class HomePage extends Component {
     const {movies, error} = this.state;
     return (
       <section className="container">
-        <h2>Trending today</h2>
+        <h2 className={styles.trendingHeader}>Trending today</h2>
         {
           movies.length > 0 &&
           <MovieList>
