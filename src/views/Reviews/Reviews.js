@@ -1,5 +1,4 @@
 import React, {Component} from "react";
-import refs from "../../services/refs";
 import fetchWithQuery from "../../services/movie-api";
 
 class Reviews extends Component {

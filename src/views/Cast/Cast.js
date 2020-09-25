@@ -23,7 +23,7 @@ class Cast extends Component {
         <ul className={styles["castList"]}>
           {cast.map(({id, name, profile_path: photo}) => (
             <li key={id}>
-              <img src={`${refs.IMAGES_URL}${photo}`} width={100}/>
+              <img src={`${refs.IMAGES_URL}${photo}`} width={100} alt={name}/>
               <h3>{name}</h3>
             </li>
           ))}

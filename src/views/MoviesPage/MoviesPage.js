@@ -62,6 +62,7 @@ class MoviesPage extends Component {
             </li>
           ))}
         </MovieList>}
+        {error && <h2>For technical reasons the information is temporarily unavailable, please try again later</h2>}
       </section>
     );
   }
