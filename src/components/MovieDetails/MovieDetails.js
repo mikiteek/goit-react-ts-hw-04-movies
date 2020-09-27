@@ -1,8 +1,23 @@
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 import refs from "../../services/refs";
 import styles from "./MovieDetails.module.scss";
 
 class MovieDetails extends Component {
+  static propTypes = {
+    movie: PropTypes.exact({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string,
+      overview: PropTypes.string,
+      poster_path: PropTypes.string,
+      vote_average: PropTypes.number,
+      release_date: PropTypes.string,
+      genres: PropTypes.arrayOf(PropTypes.exact({
+        id: PropTypes.number,
+        name: PropTypes.string,
+      })),
+    }),
+  };
 
   render() {
     const {title, overview, poster_path: poster, vote_average: score, release_date, genres} = this.props.movie;

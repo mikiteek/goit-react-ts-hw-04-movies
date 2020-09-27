@@ -1,4 +1,5 @@
 import refs from "./refs";
+import PropTypes from "prop-types";
 
 const fetchWithQuery = (endpoint, query = "") => {
   const url = query !== ""
@@ -7,6 +8,11 @@ const fetchWithQuery = (endpoint, query = "") => {
 
   return fetch(url)
     .then(res => res.json());
+}
+
+fetchWithQuery.propTypes = {
+  endpoint: PropTypes.string.isRequired,
+  query: PropTypes.string,
 }
 
 export default fetchWithQuery;
