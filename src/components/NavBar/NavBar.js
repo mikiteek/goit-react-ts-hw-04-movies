@@ -13,6 +13,7 @@ class NavBar extends Component {
             <ul className={styles.navList}>
               <li className={styles.navListItem}>
                 <NavLink
+                  exact
                   to={routes.home}
                   className={styles.navLink}
                   activeClassName={styles.activeNavLink}
