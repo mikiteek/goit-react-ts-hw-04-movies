@@ -1,9 +1,13 @@
 import React, {Component} from "react";
+import PropTypes from "prop-types";
 import styles from "./Searchbar.module.scss";
 
 class Searchbar extends Component {
   state = {
     value: "",
+  }
+  static propTypes = {
+    onSubmit: PropTypes.func,
   }
 
   handleChange = ({target}) => {
