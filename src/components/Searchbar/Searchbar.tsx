@@ -1,19 +1,23 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
 import styles from "./Searchbar.module.scss";
 
-class Searchbar extends Component {
+interface stateTypes {
+  value: string,
+}
+
+interface propTypes {
+  onSubmit: any,
+}
+
+class Searchbar extends Component<propTypes, stateTypes> {
   state = {
     value: "",
   }
-  static propTypes = {
-    onSubmit: PropTypes.func,
-  }
 
-  handleChange = ({target}) => {
+  handleChange = ({target}: {target: any}) => {
     this.setState({value: target.value});
   }
-  handleSubmit = event => {
+  handleSubmit = (event: any) => {
     event.preventDefault();
 
     this.props.onSubmit(this.state.value);
