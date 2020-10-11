@@ -3,22 +3,26 @@ import PropTypes from "prop-types";
 import refs from "../../services/refs";
 import styles from "./MovieDetails.module.scss";
 
-class MovieDetails extends Component {
-  static propTypes = {
-    movie: PropTypes.exact({
-      id: PropTypes.number.isRequired,
-      title: PropTypes.string,
-      overview: PropTypes.string,
-      poster_path: PropTypes.string,
-      vote_average: PropTypes.number,
-      release_date: PropTypes.string,
-      genres: PropTypes.arrayOf(PropTypes.exact({
-        id: PropTypes.number,
-        name: PropTypes.string,
-      })),
-    }),
-  };
+interface genreTypes {
+  id: number,
+  name: string,
+}
 
+interface movieTypes {
+  id: number
+  title: string,
+  overview: string,
+  poster_path: string,
+  vote_average: number,
+  release_date: string,
+  genres: genreTypes[],
+}
+
+interface propTypes {
+  movie: movieTypes;
+}
+
+class MovieDetails extends Component<propTypes> {
   render() {
     const {title, overview, poster_path: poster, vote_average: score, release_date, genres} = this.props.movie;
     const release = (new Date(release_date)).getFullYear();

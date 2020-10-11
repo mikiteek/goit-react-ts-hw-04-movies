@@ -1,12 +1,11 @@
 import React, {Component} from "react";
-import PropTypes from "prop-types";
 import styles from "./MovieList.module.scss";
 
-class MovieList extends Component {
-  static propTypes = {
-    children: PropTypes.node,
-  }
+interface propTypes {
+  children: any,
+}
 
+class MovieList extends Component<propTypes> {
   render() {
     return (
       <ul className={styles.movieList}>
