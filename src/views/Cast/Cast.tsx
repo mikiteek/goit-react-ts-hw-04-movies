@@ -3,7 +3,24 @@ import refs from "../../services/refs";
 import fetchWithQuery from "../../services/movie-api";
 import styles from "./Cast.module.scss";
 
-class Cast extends Component {
+interface propTypes {
+  history: any,
+  match: any,
+  location: any,
+}
+
+interface castTypes {
+  id: string,
+  name: string,
+  profile_path: string,
+}
+
+interface stateTypes {
+  cast: castTypes[],
+  error: any,
+}
+
+class Cast extends Component<propTypes, stateTypes> {
   state = {
     cast: [],
     error: null,

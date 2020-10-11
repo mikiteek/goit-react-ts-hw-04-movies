@@ -5,7 +5,23 @@ import Searchbar from "../../components/Searchbar/Searchbar";
 import fetchWithQuery from "../../services/movie-api";
 import getQueryParams from "../../utils/getQueryParams";
 
-class MoviesPage extends Component {
+interface propTypes {
+  history: any,
+  match: any,
+  location: any,
+}
+
+interface movieTypes {
+  id: string,
+  title: string,
+}
+
+interface stateTypes {
+  movies: movieTypes[],
+  error: any,
+}
+
+class MoviesPage extends Component<propTypes, stateTypes> {
   state = {
     movies: [],
     error: null,
@@ -18,7 +34,7 @@ class MoviesPage extends Component {
     }
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps: any, prevState: stateTypes) {
     const {query: prevQuery} = getQueryParams(prevProps.location.search);
     const {query: nextQuery} = getQueryParams(this.props.location.search);
 
@@ -27,14 +43,14 @@ class MoviesPage extends Component {
     }
   }
 
-  fetchMovies = query => {
+  private fetchMovies = (query: any) => {
     fetchWithQuery("search/movie", query)
       .then(({results}) => results)
       .then(movies => this.setState({movies}))
       .catch(error => this.setState({error}));
   }
 
-  handleChangeQuery = query => {
+  private handleChangeQuery = (query: string) => {
     this.props.history.push({
       ...this.props.location,
       search: `query=${query}`,
@@ -49,7 +65,7 @@ class MoviesPage extends Component {
         <Searchbar onSubmit={this.handleChangeQuery}/>
         {movies.length > 0 &&
         <MovieList>
-          {movies.map(film => (
+          {movies.map((film: movieTypes) => (
             <li key={film.id}>
               <NavLink
                 to={{

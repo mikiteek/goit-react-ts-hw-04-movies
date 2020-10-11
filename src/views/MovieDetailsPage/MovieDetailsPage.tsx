@@ -7,13 +7,37 @@ import fetchWithQuery from "../../services/movie-api";
 import styles from "./MovieDetailsPage.module.scss";
 import routes from "../../routes";
 
+interface propTypes {
+  history: any,
+  match: any,
+  location: any,
+}
 
-class MovieDetailsPage extends Component {
+// interface genreTypes {
+//   id: number,
+//   name: string,
+// }
+
+// interface movieTypes {
+//   id: number
+//   title: string,
+//   overview: string,
+//   poster_path: string,
+//   vote_average: number,
+//   release_date: string,
+//   genres: genreTypes[],
+// }
+
+interface stateTypes {
+  movie: any,
+  error: any,
+}
+
+class MovieDetailsPage extends Component<propTypes, stateTypes> {
   state = {
     movie: null,
     error: null,
   }
-
 
   componentDidMount() {
     const endpoint = (`movie/${this.props.match.params.movieId}`);
@@ -22,7 +46,7 @@ class MovieDetailsPage extends Component {
       .catch(error => this.setState({error}));
   }
 
-  handleGoBack = () => {
+  private handleGoBack = (): void => {
     const {location: {state}, history} = this.props;
 
     if (state && state.from) {

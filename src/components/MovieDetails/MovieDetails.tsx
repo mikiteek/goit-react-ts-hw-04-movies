@@ -19,12 +19,13 @@ interface movieTypes {
 }
 
 interface propTypes {
-  movie: movieTypes;
+  movie: any;
+  // movie: movieTypes;
 }
 
 class MovieDetails extends Component<propTypes> {
   render() {
-    const {title, overview, poster_path: poster, vote_average: score, release_date, genres} = this.props.movie;
+    const {title, overview, poster_path: poster, vote_average: score, release_date, genres}: movieTypes = this.props.movie;
     const release = (new Date(release_date)).getFullYear();
     return (
       <section>
