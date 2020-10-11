@@ -1,7 +1,24 @@
 import React, {Component} from "react";
 import fetchWithQuery from "../../services/movie-api";
 
-class Reviews extends Component {
+interface propTypes {
+  history: any,
+  match: any,
+  location: any,
+}
+
+interface reviewer {
+  id: string,
+  author: string,
+  content: string,
+}
+
+interface stateTypes {
+  reviews: reviewer[],
+  error: any,
+}
+
+class Reviews extends Component<propTypes, stateTypes> {
   state = {
     reviews: [],
     error: null,

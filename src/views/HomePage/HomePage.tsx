@@ -5,7 +5,23 @@ import fetchWithQuery from "../../services/movie-api";
 import styles from "./HomePage.module.scss";
 import routes from "../../routes";
 
-class HomePage extends Component {
+interface propTypes {
+  history: any,
+  match: any,
+  location: any,
+}
+
+interface movieTypes {
+  id: string,
+  title: string,
+}
+
+interface stateTypes {
+  movies: movieTypes[],
+  error: any,
+}
+
+class HomePage extends Component<propTypes, stateTypes> {
   state = {
     movies: [],
     error: null
@@ -26,7 +42,7 @@ class HomePage extends Component {
         {
           movies.length > 0 &&
           <MovieList>
-            {movies.map(film => (
+            {movies.map((film: movieTypes) => (
               <li key={film.id}>
                 <NavLink
                   to={{
